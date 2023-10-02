@@ -1,6 +1,14 @@
 import json
+import os
 
-filepath = "/home/Hunter/.steam/steam/steamapps/workshop/content/387990/2817316401/data.json"
+# Make sure to set the path correctly
+# Linux
+filepath = "/home/$USER/.steam/steam/steamapps/workshop/content/387990/2817316401/data.json"
+
+# Windows
+#filepath = r"C:\Program Files (x86)\Steam\steamapps\workshop\content\387990\2817316401\data.json"
+
+# ================================================================
 
 fileread = b""
 
@@ -13,7 +21,7 @@ for i in range(0, len(fileread), 2):
     output.append([counter, (fileread[i]<<8)|fileread[i+1]])
     counter += 1
 
-with open(filepath, "w") as f:
+with open(os.path.expandvars(filepath), "w") as f:
     json.dump(output, f)
 print("Finished exporting!")
 print(json.dumps(output))
