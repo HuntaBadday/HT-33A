@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Assemble",
+            "type": "shell",
+            "command": "~/.cargo/bin/customasm",
+            "args": [
+                "-o",
+                "data.bin",
+                "ht-33a.asm",
+                "${file}"
+            ],
+            "options": {
+                "cwd": ""
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Export",
+            "type": "shell",
+            "command": "/bin/python3",
+            "args": [
+                "export.py"
+            ],
+            "options": {
+                "cwd": ""
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
